@@ -1,0 +1,13 @@
+# Игнорировать всё
+*
+
+# Оставить .gitignore
+!.gitignore
+
+# Оставить путь до темы
+!wp-content/
+!wp-content/themes/
+!wp-content/themes/shop-theme/
+
+# Оставить всё внутри темы
+!wp-content/themes/shop-theme/**/*
