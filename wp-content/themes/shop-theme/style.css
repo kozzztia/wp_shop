@@ -5,13 +5,17 @@ Version: 1.0
 */
 
 *{
-    padding: 0;
-    margin: 0;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    font-family: 'Montserrat', sans-serif;
-    background: rgba(128, 128, 128, 0.2);
-    color : #000000;
+:root{
+    --max-width : 1200px;
+}
+
+.centered{
+    max-width: var(--max-width);
+    width: 100%;
+    margin: 0 auto;
 }

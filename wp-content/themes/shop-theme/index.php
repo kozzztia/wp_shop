@@ -1,9 +1,13 @@
-<?php
+<?php get_header(); ?>
 
-    get_theme_header();
+    <h1><?php the_title(); ?></h1>
 
-    echo "Hello from my theme";
+<?php if ( has_post_thumbnail() ) {
+    the_post_thumbnail();
+} ?>
 
-    get_theme_footer();
+    <div class="content centered">
+        <?php the_content(); ?>
+    </div>
 
-?>
+<?php get_footer();
