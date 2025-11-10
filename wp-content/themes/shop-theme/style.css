@@ -12,10 +12,41 @@ Version: 1.0
 
 :root{
     --max-width : 1200px;
+    --top-spacing: 50px;
 }
 
 .centered{
     max-width: var(--max-width);
     width: 100%;
     margin: 0 auto;
+    display: flex;
+}
+
+.header{
+    width: 100%;
+    height: var(--top-spacing);
+    position: fixed;
+    .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        max-width: var(--max-width);
+        margin: 0 auto;
+    }
+    .link-list{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        gap :15px;
+    }
+}
+
+
+
+.content{
+    padding-top: var(--top-spacing);
 }

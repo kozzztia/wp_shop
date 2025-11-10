@@ -1,6 +1,6 @@
 
 <!doctype html>
-    <html lang="en">
+    <html lang="<?php echo get_locale(); ?>">
         <head>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="profile" href="https://gmpg.org/xfn/11">
@@ -9,17 +9,20 @@
         </head>
 
         <body>
-            <header class="header centered">
+            <header class="header">
                 <div class="container">
-                    <a href="<?php get_site_url()?>/">logo</a>
-                </div>
+                    <div>
+                        <a href="<?php get_site_url()?>/admin">admin</a>
+                    </div>
 
-                <ul>
-                    <li><a href="/">home</a></li>
-                    <li><a href="<?php get_site_url()?>/shop">shop</a></li>
-                    <li><a href="<?php get_site_url()?>/about">about</a></li>
-                    <li><a href="<?php get_site_url()?>/admin">admin</a></li>
-                </ul>
+                    <ul class="link-list">
+                        <li><a href="<?php get_site_url()?>/">home</a></li>
+                        <li><a href="<?php get_site_url()?>/shop">shop</a></li>
+                        <li><a href="<?php get_site_url()?>/about">about</a></li>
+                        <li><a href="<?php get_site_url()?>/posts">posts</a></li>
+                    </ul>
+                </div>
             </header>
             <main>
 <!--     other part in footer   -->
+
