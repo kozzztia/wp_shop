@@ -1,0 +1,8 @@
+# Игнорировать всё
+/*
+
+# Разрешить путь к теме
+!/wp-content/
+!/wp-content/themes/
+!/wp-content/themes/shop-theme/
+!/wp-content/themes/shop-theme/**/*
