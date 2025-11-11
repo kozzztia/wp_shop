@@ -50,4 +50,19 @@ Version: 1.0
 
 .content{
     padding-top: var(--top-spacing);
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.list{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .item{
+        list-style: none;
+        background: grey;
+    }
 }
