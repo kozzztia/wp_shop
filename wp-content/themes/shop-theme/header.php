@@ -11,17 +11,27 @@
 
         <body>
             <header class="header">
-                <div class="container">
-                    <div>
-                        <a href="<?php get_site_url()?>/admin">admin</a>
+                <div class="centred-container">
+                    <div class="logo">
+                        <?php if (has_custom_logo()) {
+                            the_custom_logo();
+                        } else { ?>
+                            <a
+                                    href="<?php echo get_site_url(); ?>"
+                                    class="custom-logo-link">
+                                <img
+                                        class="custom-logo"
+                                        src="<?php echo get_theme_file_uri('assets/images/logo.png'); ?>"
+                                        alt="Site Logo">
+                            </a>
+                        <?php } ?>
                     </div>
 
                     <ul class="link-list">
-                        <li><a href="<?php get_site_url()?>/">home</a></li>
-                        <li><a href="<?php get_site_url()?>/shop">shop</a></li>
-                        <li><a href="<?php get_site_url()?>/about">about</a></li>
-                        <li><a href="<?php get_site_url()?>/posts">posts</a></li>
+                        <li><a href="<?php get_site_url()?>/admin">admin</a></li>
+                        <?php wp_list_pages(['title_li' => '']); ?>
                     </ul>
+
                 </div>
             </header>
             <main>

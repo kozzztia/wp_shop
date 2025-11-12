@@ -1,10 +1,11 @@
 <?php
-add_theme_support('title-tag');
+add_theme_support('title-tag',);
 add_theme_support('post-thumbnails', ['post', 'page']);
 
-add_action('wp_enqueue_scripts', 'shop_scripts');
+//слбытие начала 1 подключения скриптов 2 какую функцию запустить
+add_action('wp_enqueue_scripts', 'include_shop_scripts');
 
-function shop_scripts(): void
+function include_shop_scripts(): void
 {
     // main style file for wp
     wp_enqueue_style('style', get_stylesheet_uri(), [], get_version());
@@ -59,8 +60,23 @@ function shop_scripts(): void
         true
     );
 }
-
-function get_version(): string
-{
+function get_version(): string{
     return time() . 'shop';
+}
+
+if(!function_exists("shop_setup")){
+    function shop_setup(){
+        add_theme_support('custom-logo',[
+                'height'      => 50,
+                'width'       => 150,
+                'flex-height' => false,
+                'flex-width'  => false,
+                'header-text' => 'logo',
+//               change as false to be a link to home
+                'unlink-homepage-logo' => false,
+            ]
+        );
+    }
+//    событие вордпреса превый аршумент
+    add_action('after_setup_theme', 'shop_setup');
 }
