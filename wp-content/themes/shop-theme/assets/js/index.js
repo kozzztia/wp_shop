@@ -1,1 +1,4 @@
-import('./custom.js');
+
+$(document).ready(function() {
+    startProject('start project')
+});

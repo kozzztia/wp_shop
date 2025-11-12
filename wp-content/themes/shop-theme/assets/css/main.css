@@ -4,12 +4,6 @@
     padding: 0;
 }
 
-:root{
-    --max-width : 1200px;
-    --top-spacing: 50px;
-}
-
-
 .centered{
     max-width: var(--max-width);
     width: 100%;
@@ -21,6 +15,7 @@
     width: 100%;
     height: var(--top-spacing);
     position: fixed;
+
     .container{
         display: flex;
         justify-content: center;
@@ -47,17 +42,4 @@
     display: flex;
     flex-direction: column;
     gap :20px;
-}
-
-.list{
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    .item{
-        list-style: none;
-        background: grey;
-    }
 }

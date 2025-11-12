@@ -1,1 +1,3 @@
-console.log("go")
+function startProject(value){
+    console.log(value)
+}
