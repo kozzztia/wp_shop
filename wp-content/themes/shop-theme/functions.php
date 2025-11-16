@@ -16,7 +16,7 @@
                 'unlink-homepage-logo' => false,
             ]
         );
-        add_theme_support('title-tag',);
+        add_theme_support('title-tag');
         add_theme_support('post-thumbnails', ['post', 'page']);
     }
 //    событие вордпреса превый аршумент
@@ -70,7 +70,6 @@ function include_shop_scripts(): void
         get_version(),
         true
     );
-//    question - how can i import this file
     wp_enqueue_script(
         'custom-js',
         get_template_directory_uri() . '/assets/js/custom.js',
@@ -95,20 +94,12 @@ add_action('init', 'register_shop_menus');
 add_filter('nav_menu_css_class', 'shop_menu_css_class', 10, 4);
 
 function shop_menu_css_class($classes, $item , $args, $depth) {
-    switch ($args->theme_location) {
-        case 'header':
-            $classes[] = 'headerItem';
-            break;
-        case 'social':
-            $classes[] = 'socialItem';
-            break;
-        case 'footer':
-            $classes[] = 'footerItem';
-            break;
-        default:
-            $classes[] = 'item';
-            break;
-    }
+    $classes[] = match ($args->theme_location) {
+        'header' => 'headerItem',
+        'social' => 'socialItem',
+        'footer' => 'footerItem',
+        default => 'item',
+    };
 
     if (in_array('current_page_item', $classes)) {
         $classes[] = 'active';
@@ -135,7 +126,7 @@ class Shop_Social_Icons_Only extends Walker_Nav_Menu {
     }
 }
 
-class Shop_Bootstrap_Navwalker extends Walker_Nav_Menu {
+class Shop_Bootstrap_Walker extends Walker_Nav_Menu {
     public function start_lvl(&$output, $depth = 0, $args = [], $id = 0): void {
         $output .= '<ul class="dropdown-menu">';
     }

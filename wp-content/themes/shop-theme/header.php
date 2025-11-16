@@ -35,7 +35,7 @@
                             'container' => 'div',
                             'container_class' => 'navigation',
                             'menu_class' => 'headerMenu navbar-nav',
-                            'walker'          => new Shop_Bootstrap_Navwalker(),
+                            'walker'          => new Shop_Bootstrap_Walker(),
                     ]);
                     ?>
                 </div>
