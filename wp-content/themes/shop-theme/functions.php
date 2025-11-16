@@ -113,13 +113,13 @@ class Shop_Social_Icons_Only extends Walker_Nav_Menu {
             $title = strtolower(trim($item->title));
             $icon = '<svg class="icon" aria-hidden="true">
                         <use href="' .
-                get_template_directory_uri() . '/assets/svg/sprite.svg?ver=' .
-                get_version() . '#' . $title . '">
+                            get_template_directory_uri() . '/assets/svg/sprite.svg?ver=' .
+                            get_version() . '#' . $title . '">
                         </use>
                     </svg>';
 
             $output .= '<li>';
-            $output .= '<a href="' . esc_url($item->url) . '" title="' . esc_attr($item->title) . '">';
+            $output .= '<a href="' . esc_url($item->url) . '" title="' . esc_attr($item->title) . '" target="_blank"">';
             $output .= $icon . '<span class="visually-hidden">' . esc_html($item->title) . '</span>';
             $output .= '</a>';
         }
