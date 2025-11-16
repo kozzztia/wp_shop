@@ -34,7 +34,8 @@
                             'theme_location' => 'header',
                             'container' => 'div',
                             'container_class' => 'navigation',
-                            'menu_class' => 'headerMenu',
+                            'menu_class' => 'headerMenu navbar-nav',
+                            'walker'          => new Shop_Bootstrap_Navwalker(),
                     ]);
                     ?>
                 </div>

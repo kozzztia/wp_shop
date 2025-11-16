@@ -31,22 +31,88 @@
     width: 100%;
     margin-bottom: 0;
 
-    *{
+    * {
         list-style: none;
     }
-    a{
+
+    a {
         text-decoration: none;
-        color :currentColor;
+        color: currentColor;
     }
 
-    .headerMenu{
-        color: green;
+    /* Основной контейнер меню */
+
+    .headerMenu {
+        width: 100%;
         display: flex;
-        gap: 20px;
-        align-items: center;
+        flex-direction: row;
         justify-content: flex-end;
+        gap: 20px;
+
+        /* Элементы меню */
+
+        .nav-item {
+            position: relative;
+        }
+
+        /* Ссылки */
+
+        .nav-link {
+            color: green;
+            padding: 8px 12px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: darkgreen;
+        }
+
+        /* Активная ссылка */
+
+        .nav-link.active {
+            color: red;
+        }
+
+        /* Выпадающее меню */
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 180px;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 10px 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Показываем при наведении */
+
+        .nav-item.dropdown:hover .dropdown-menu,
+        .nav-item.dropdown.active .dropdown-menu {
+            display: block;
+        }
+
+        /* Пункты внутри dropdown */
+
+        .dropdown-menu a {
+            display: block;
+            padding: 8px 16px;
+            color: green;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f8f9fa;
+            color: red;
+        }
     }
-    .socialMenu{
+
+    .socialMenu {
         margin: 0 0 0 auto;
         width: 100%;
         height: auto;
@@ -54,10 +120,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap : 10px;
+        gap: 10px;
 
         li {
-            a{
+            a {
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -66,17 +132,11 @@
                 transform: scale(1);
                 transition: transform .2s;
                 font-weight: bold;
-                &:hover{
+
+                &:hover {
                     transform: scale(1.2);
                 }
             }
-        }
-        .icon_fallback{
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            border: 1px solid green;
-            color :green;
         }
 
         .icon {
@@ -86,11 +146,9 @@
             vertical-align: middle;
         }
     }
-    .footerMenu{
+
+    .footerMenu {
         color: orange;
-    }
-    .active{
-        color: red;
     }
 }
 
