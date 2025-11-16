@@ -1,10 +1,29 @@
 <?php
-add_theme_support('title-tag',);
-add_theme_support('post-thumbnails', ['post', 'page']);
+//add_theme_support('title-tag',);
 
-//слбытие начала 1 подключения скриптов 2 какую функцию запустить
-add_action('wp_enqueue_scripts', 'include_shop_scripts');
 
+//if(!function_exists("shop_setup")){
+function shop_setup(): void
+{
+    add_theme_support('custom-logo', [
+            'height' => 50,
+            'width' => 150,
+            'flex-height' => false,
+            'flex-width' => false,
+            'header-text' => 'logo',
+//               change as false to be a link to home
+            'unlink-homepage-logo' => false,
+        ]
+    );
+    add_theme_support('title-tag');
+    add_theme_support('post-thumbnails', ['post', 'page']);
+}
+
+//    событие вордпреса превый аршумент
+add_action('after_setup_theme', 'shop_setup');
+//}
+
+//including scripts
 function include_shop_scripts(): void
 {
     // main style file for wp
@@ -60,23 +79,65 @@ function include_shop_scripts(): void
         true
     );
 }
-function get_version(): string{
+
+add_action('wp_enqueue_scripts', 'include_shop_scripts');
+
+//register of location for menus
+function register_shop_menus(): void
+{
+    $locations = array(
+        'header' => __('Header Navigation', 'shop'),
+        'social' => __('Social Navigation', 'shop'),
+        'footer' => __('Footer Navigation', 'shop'),
+    );
+    register_nav_menus($locations);
+}
+
+add_action('init', 'register_shop_menus');
+
+add_filter('nav_menu_css_class', 'shop_menu_css_class', 10, 4);
+
+function shop_menu_css_class($classes, $item, $args, $depth)
+{
+    switch ($args->theme_location) {
+        case 'header':
+            $classes[] = 'headerItem';
+            break;
+        case 'social':
+            $classes[] = 'socialItem';
+            break;
+        case 'footer':
+            $classes[] = 'footerItem';
+            break;
+        default:
+            $classes[] = 'item';
+            break;
+    }
+
+    if (in_array('current_page_item', $classes)) {
+        $classes[] = 'active';
+    }
+    return $classes;
+}
+
+class Shop_Social_Icons_Only extends Walker_Nav_Menu {
+    public function start_el(&$output, $item, $depth = 0, $args = [], $id = 0): void {
+        if ($args->theme_location !== 'social') return;
+
+        $title = strtolower(trim($item->title));
+        $iconId = 'icon-' . $title;
+        $sprite = get_template_directory_uri() . '/assets/svg/sprite.svg';
+
+        $output .= '<li><a href="' . esc_url($item->url) . '" title="' . esc_attr($item->title) . '">';
+        $output .= '<svg class="icon"><use href="' . $sprite . '#' . $iconId . '"></use></svg>';
+        $output .= '</a></li>';
+    }
+}
+
+
+// version generator
+function get_version(): string
+{
     return time() . 'shop';
 }
 
-if(!function_exists("shop_setup")){
-    function shop_setup(){
-        add_theme_support('custom-logo',[
-                'height'      => 50,
-                'width'       => 150,
-                'flex-height' => false,
-                'flex-width'  => false,
-                'header-text' => 'logo',
-//               change as false to be a link to home
-                'unlink-homepage-logo' => false,
-            ]
-        );
-    }
-//    событие вордпреса превый аршумент
-    add_action('after_setup_theme', 'shop_setup');
-}

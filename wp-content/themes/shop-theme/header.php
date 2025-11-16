@@ -1,4 +1,6 @@
 
+
+
 <!doctype html>
     <html lang="<?php echo get_locale(); ?>">
         <head>
@@ -27,11 +29,14 @@
                         <?php } ?>
                     </div>
 
-                    <ul class="link-list">
-                        <li><a href="<?php get_site_url()?>/admin">admin</a></li>
-                        <?php wp_list_pages(['title_li' => '']); ?>
-                    </ul>
-
+                    <?php
+                    wp_nav_menu([
+                            'theme_location' => 'header',
+                            'container' => 'div',
+                            'container_class' => 'navigation',
+                            'menu_class' => 'headerMenu',
+                    ]);
+                    ?>
                 </div>
             </header>
             <main>
