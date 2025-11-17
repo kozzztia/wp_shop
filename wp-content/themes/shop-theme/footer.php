@@ -2,7 +2,7 @@
 
     </main>
     <footer class="centered">
-        footer footer footer footer
+        <p>footer footer</p>
         <?php
         wp_nav_menu([
                 'theme_location' => 'footer',

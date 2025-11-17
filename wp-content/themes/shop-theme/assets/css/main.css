@@ -11,15 +11,23 @@
     display: flex;
 }
 
-.header {
+header {
     width: 100%;
     height: var(--top-spacing);
     position: fixed;
 }
 
+footer{
+    width : 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding :0 15px;
+}
+
 .centred-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
     max-width: var(--max-width);
@@ -28,7 +36,6 @@
 }
 
 .navigation {
-    width: 100%;
     margin-bottom: 0;
 
     * {
@@ -65,7 +72,7 @@
         }
 
         .nav-link:hover {
-            color: darkgreen;
+            color: red;
         }
 
         /* Активная ссылка */
@@ -149,6 +156,11 @@
 
     .footerMenu {
         color: orange;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 30px;
+        margin-left: auto;
     }
 }
 
