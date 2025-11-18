@@ -127,39 +127,61 @@ class Shop_Social_Icons_Only extends Walker_Nav_Menu {
 }
 
 class Shop_Bootstrap_Walker extends Walker_Nav_Menu {
-    public function start_lvl(&$output, $depth = 0, $args = [], $id = 0): void {
-        $output .= '<ul class="dropdown-menu">';
-    }
-
     public function start_el(&$output, $item, $depth = 0, $args = [], $id = 0): void {
         $classes = $item->classes ?? [];
         $hasChildren = in_array('menu-item-has-children', $classes);
         $isDropdown = $depth === 0 && $hasChildren;
         $isActive = in_array('current-menu-item', $classes) || in_array('current_page_item', $classes);
 
+        // <li> classes
         $liClass = $isDropdown ? 'nav-item dropdown' : 'nav-item';
         if ($isActive) $liClass .= ' active';
 
-        $linkClass = $isDropdown ? 'nav-link dropdown-toggle' : 'nav-link';
+        // <a> classes
+        $linkClass = $depth === 0
+            ? ($isDropdown ? 'nav-link dropdown-toggle' : 'nav-link')
+            : 'dropdown-item';
         if ($isActive) $linkClass .= ' active';
 
-        // ВАЖНО: не добавляем data-bs-toggle, чтобы не блокировать клик
+        // Build <li>
         $output .= '<li class="' . esc_attr($liClass) . '">';
-        $output .= '<a href="' . esc_url($item->url) . '" class="' . esc_attr($linkClass) . '">';
+
+        // Build <a>
+        $output .= '<a href="' . esc_url($item->url) . '" class="' . esc_attr($linkClass) . '"';
+        if ($isDropdown) {
+            $output .= ' aria-expanded="false"';
+        }
+        $output .= '>';
         $output .= esc_html($item->title);
         $output .= '</a>';
+
+        // Вставляем <ul> сразу, если есть подменю
+        if ($isDropdown) {
+            $output .= '<ul class="dropdown-menu">';
+        }
     }
 
     public function end_el(&$output, $item, $depth = 0, $args = [], $id = 0): void {
+        $classes = $item->classes ?? [];
+        $hasChildren = in_array('menu-item-has-children', $classes);
+        $isDropdown = $depth === 0 && $hasChildren;
+
+        // Закрываем <ul> если был dropdown
+        if ($isDropdown) {
+            $output .= '</ul>';
+        }
+
+        // Закрываем <li>
         $output .= '</li>';
     }
 
-    public function end_lvl(&$output, $depth = 0, $args = [], $id = 0): void {
-        $output .= '</ul>';
-    }
+    // Убираем вызовы вложенных уровней — они теперь встроены
+    public function start_lvl(&$output, $depth = 0, $args = [], $id = 0): void {}
+    public function end_lvl(&$output, $depth = 0, $args = [], $id = 0): void {}
 }
 
-
+//include queries
+require_once get_template_directory() . '/inc/queries.php';
 
 
 

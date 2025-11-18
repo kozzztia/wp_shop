@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
     <div class="content centered">
-        <h1><?php echo get_the_title(get_option('page_for_posts')); ?></h1>
+        <h1><?php echo get_the_title(get_option('page_for_posts')); ?> : home</h1>
 
         <?php
         $categories = get_categories([

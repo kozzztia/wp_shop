@@ -21,6 +21,22 @@
     <?php else : ?>
         <p>Ничего не найдено.</p>
     <?php endif; ?>
+
+    <div class="test">
+        <?php
+        $posts = get_posts_query();
+
+        if ($posts->have_posts()) :
+            while ($posts->have_posts()) : $posts->the_post();
+                get_template_part('template_parts/post-card');
+            endwhile;
+            wp_reset_postdata();
+        else :
+            echo 'Нет записей';
+        endif;
+        ?>
+    </div>
+
 </div>
 
 <?php get_footer(); ?>
