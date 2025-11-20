@@ -2,4 +2,8 @@
 :root{
     --max-width : 1200px;
     --top-spacing: 50px;
+    --color-white: rgba(255, 255, 255, 0.8);
+    --color-black: rgba(0, 0, 0, 0.8);
+    --color-black-title: rgba(2, 46, 2, 0.42);
+    --size-main: 20px;
 }

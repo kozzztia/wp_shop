@@ -2,7 +2,7 @@
 
     <div class="content centered">
         <article class="single-post">
-            <h1><?php the_title(); ?> : single</h1>
+            <h1><?php the_title(); ?> : single-post</h1>
             <time datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date(); ?></time>
 
             <?php if (has_post_thumbnail()) : ?>

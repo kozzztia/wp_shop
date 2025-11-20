@@ -15,14 +15,16 @@ header {
     width: 100%;
     height: var(--top-spacing);
     position: fixed;
+    background: rgba(255, 255, 255, 0.3);
+    z-index: 10;
 }
 
-footer{
-    width : 100%;
+footer {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding :0 15px;
+    padding: 0 15px;
 }
 
 .centred-container {
@@ -55,6 +57,7 @@ footer{
         flex-direction: row;
         justify-content: flex-end;
         gap: 20px;
+
 
         /* Элементы меню */
 
@@ -98,7 +101,7 @@ footer{
 
         /* Показываем при наведении */
 
-        .nav-item.dropdown:hover .dropdown-menu{
+        .nav-item.dropdown:hover .dropdown-menu {
             display: block;
         }
 
@@ -163,10 +166,39 @@ footer{
     }
 }
 
-
 .content {
     padding: var(--top-spacing) 15px 0 15px;
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.button {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 10px;
+    padding: 10px 15px;
+    background: #008000;
+    height: 40px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color : var(--color-white);
+    font-weight: 900;
+    line-height: 1;
+    transition: transform 0.3s ease;
+    &:hover{
+        transform: scale(1.06);
+    }
+}
+
+.mainText{
+    margin-bottom: 30px;
+    .title{
+        width: 100%;
+        text-align: center;
+        color: var(--color-black-title);
+        font-size: 32px;
+        font-weight: 600;
+    }
 }

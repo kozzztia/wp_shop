@@ -1,12 +1,14 @@
 <?php get_header(); ?>
 
-<?php //if (has_post_thumbnail()) {
-//    the_post_thumbnail();
-//} ?>
+<?php if (has_post_thumbnail()) {
+    the_post_thumbnail();
+} ?>
 
     <div class="content centered">
         <h1><?php the_title(); ?> page</h1>
-        <?php the_content(); ?>
+        <?php
+            the_content();
+        ?>
         <?php
         wp_nav_menu([
             'theme_location' => 'social',
