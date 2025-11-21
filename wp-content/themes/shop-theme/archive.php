@@ -9,8 +9,8 @@
             <?php while (have_posts()) : the_post(); ?>
                 <article class="post-item">
                     <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+<!--                    <div class="excerpt">--><?php //the_excerpt(); ?><!--</div>-->
                     <time datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date(); ?></time>
-                    <div class="excerpt"><?php the_excerpt(); ?></div>
                 </article>
             <?php endwhile; ?>
         </div>
@@ -22,20 +22,20 @@
         <p>Ничего не найдено.</p>
     <?php endif; ?>
 
-    <div class="test">
-        <?php
-        $posts = get_posts_query();
-
-        if ($posts->have_posts()) :
-            while ($posts->have_posts()) : $posts->the_post();
-                get_template_part('template_parts/post-card');
-            endwhile;
-            wp_reset_postdata();
-        else :
-            echo 'Нет записей';
-        endif;
-        ?>
-    </div>
+<!--    <div class="test">-->
+<!--        --><?php
+//        $posts = get_posts_query();
+//
+//        if ($posts->have_posts()) :
+//            while ($posts->have_posts()) : $posts->the_post();
+//                get_template_part('template_parts/post-card');
+//            endwhile;
+//            wp_reset_postdata();
+//        else :
+//            echo 'Нет записей';
+//        endif;
+//        ?>
+<!--    </div>-->
 
 </div>
 

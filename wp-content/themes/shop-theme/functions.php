@@ -16,8 +16,10 @@
                 'unlink-homepage-logo' => false,
             ]
         );
+//        сключаем заголовок
         add_theme_support('title-tag');
-        add_theme_support('post-thumbnails', ['post', 'page']);
+//        сключаем миниатюры
+        add_theme_support('post-thumbnails', ['post', 'page', 'thumbnail']);
     }
 //    событие вордпреса превый аршумент
     add_action('after_setup_theme', 'shop_setup');
