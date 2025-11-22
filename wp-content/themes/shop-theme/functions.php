@@ -19,7 +19,10 @@
 //        сключаем заголовок
         add_theme_support('title-tag');
 //        сключаем миниатюры
-        add_theme_support('post-thumbnails', ['post', 'page', 'thumbnail']);
+        add_theme_support('post-thumbnails', ['post', 'page']);
+//        set_post_thumbnail_size(300, 300, true);
+//        add_image_size('card-thumb', 150, 150, true);
+//        add_image_size('card-thumb-large', 350, 350, true);
     }
 //    событие вордпреса превый аршумент
     add_action('after_setup_theme', 'shop_setup');

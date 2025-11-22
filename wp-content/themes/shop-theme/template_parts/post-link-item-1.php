@@ -3,28 +3,27 @@ $title = get_the_title();
 $excerpt = get_the_excerpt();
 $permalink = get_permalink();
 $category = get_the_category();
-$thumbnail_url = get_the_post_thumbnail_url(null, 'medium');
 $date = get_the_date();
 $time = get_the_time('d:m:y | h:i:s');
 $author = get_the_author();
 
 ?>
 
-<div class="postLinkItem postCard">
+<div class="postLinkItem postCard card-1">
     <div class="postCardFace postCardImage">
-
-        <?php if ($thumbnail_url) : ?>
-            <?php  the_post_thumbnail('thumb', ['class' => 'postBG', 'alt' => esc_attr($title)]); ?>
+        <?php if (has_post_thumbnail()) : ?>
+            <?php  the_post_thumbnail('medium', ['class' => 'postBG', 'alt' => esc_attr($title)]); ?>
         <?php else: ?>
-            <img src="<?= get_theme_file_uri('assets/images/dog.jpg'); ?>" class="postBG" alt="<?= esc_attr($title); ?>">
+            <img src="<?= get_theme_file_uri('assets/images/dog.jpg'); ?>" class="postBG default" alt="<?= esc_attr($title)  ?>">
         <?php endif; ?>
 
         <div class="postTitle">
-            <h5 class="card-title"><?= esc_html($title); ?> </p></h5>
+            <h5 class="card-title"><?= esc_html($title);?></h5>
         </div>
     </div>
 
     <div class="postCardFace postCardArticle">
+<!--        --><?php //the_content() ?>
         <?php if ($permalink) : ?>
             <h5 class="cardTitle">
                 <a href="<?= esc_url($permalink); ?>"><?= esc_html($title); ?></a>
@@ -54,7 +53,7 @@ $author = get_the_author();
         <?php endif; ?>
 
         <?php  if (has_post_thumbnail()) : ?>
-                <?php  the_post_thumbnail('thumb', ['class' => 'thumbnail'])?>
+                <?php  the_post_thumbnail('thumbnail', ['class' => 'thumbnail'])?>
         <?php endif; ?>
 
 

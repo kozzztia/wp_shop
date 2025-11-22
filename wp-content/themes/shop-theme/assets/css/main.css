@@ -246,37 +246,59 @@ footer {
 
 .list {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 1fr;
+    /*display: grid;*/
+    /*grid-template-columns: repeat(2, 1fr);*/
+    /*grid-auto-rows: 1fr;*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 20px;
 
     .postCard {
         position: relative;
-        overflow: hidden ;
+        overflow: hidden;
         box-shadow: 0 0 10px rgba(0, 0, 0, .2);
         border-radius: 15px;
+
+
+        &.card-1 {
+            width: calc(50% - 10px);
+            .postBG {
+                aspect-ratio: .8/1;
+
+            }
+        }
+
+        &.card-2 {
+            width: 100%;
+            .postBG {
+                aspect-ratio:1.63/1;
+
+            }
+        }
+
 
         .postCardFace {
             width: 100%;
             height: 100%;
-            overflow: hidden ;
+            overflow: hidden;
         }
 
         .postCardImage {
             position: relative;
-
             overflow: hidden;
 
-            .postBG {
+            .postBG{
                 display: block;
                 width: 100%;
                 height: auto;
                 object-fit: cover;
                 object-position: center;
-                aspect-ratio: .8/1;
-
+                &.default{
+                    filter: blur(10px);
+                }
             }
+
 
             .postTitle {
                 position: absolute;
@@ -285,37 +307,38 @@ footer {
                 height: 10%;
                 background: var(--color-black-title);
                 width: 100%;
-                text-align: center;
                 color: var(--color-white);
-                padding-top: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         }
 
         .postCardArticle {
             position: absolute;
-            padding :25px 20px;
+            padding: 25px 20px;
             background: var(--color-white);
-            /*top: -100%;*/
-            top: 0;
+            top: -100%;
+            /*top: 0;*/
             transition: .2s ease;
             left: 0;
             display: flex;
             flex-direction: column;
 
-            .cardButton{
+            .cardButton {
                 margin: auto 0 0 auto;
                 text-align: center;
                 text-decoration: none;
                 color: var(--color-white);
                 background: var(--color-black-title);
                 border-radius: 5px;
-                padding :  0 20px;
+                padding: 0 20px;
                 height: 40px;
                 line-height: 40px;
             }
 
-            .thumbnail{
-                width : 45%;
+            .thumbnail {
+                width: 45%;
                 height: auto;
                 border-radius: 15px;
                 object-fit: cover;
@@ -323,14 +346,15 @@ footer {
 
             }
         }
-        .cardButton{
+
+        .cardButton {
 
         }
 
 
         &:hover {
-            .postCardArticle{
-                top :0;
+            .postCardArticle {
+                top: 0;
             }
         }
     }
