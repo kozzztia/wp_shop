@@ -188,10 +188,27 @@ class Shop_Bootstrap_Walker extends Walker_Nav_Menu {
 //include queries
 require_once get_template_directory() . '/inc/queries.php';
 
+//add_filter('navigation_markup_template', function($template, $class){
+//    return '
+//        <nav class="navigation %1$s" role="navigation">
+//            <div class="nav-links">%3$s</div>
+//        </nav>';
+//}, 10, 2);
 
+function shop_widgets_init(): void
+{
+    register_sidebar([
+        'name' => esc_html__('shop sidebar', 'shop'),
+        'id' => 'shop-sidebar',
+        'before_widget' => '<section id="%1$s" class="sidebar %2$s">',
+        'after_widget' => '</section>',
+        'before_title' => '<h5 class="sidebar-title">',
+        'after_title' => '</h5>',
 
+    ]);
+}
 
-
+add_action('widgets_init', 'shop_widgets_init');
 
 
 

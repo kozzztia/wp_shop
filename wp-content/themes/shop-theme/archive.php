@@ -9,17 +9,16 @@
             <?php while (have_posts()) : the_post(); ?>
                 <article class="post-item">
                     <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-<!--                    <div class="excerpt">--><?php //the_excerpt(); ?><!--</div>-->
+                    <div class="excerpt"><?php the_excerpt(); ?></div>
                     <time datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date(); ?></time>
                 </article>
             <?php endwhile; ?>
         </div>
 
-        <div class="pagination">
-            <?php the_posts_pagination(); ?>
+        <?php get_template_part('template_parts/pagination');?>
         </div>
     <?php else : ?>
-        <p>Ничего не найдено.</p>
+        <p>nothing....................................</p>
     <?php endif; ?>
 
 <!--    <div class="test">-->
