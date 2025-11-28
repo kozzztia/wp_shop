@@ -8,6 +8,7 @@ $title = get_field('title');
 
 <?php if (has_post_thumbnail()) {
     the_post_thumbnail();
+
 } ?>
 
     <div class="content centered">
