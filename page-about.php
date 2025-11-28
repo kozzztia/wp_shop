@@ -1,4 +1,6 @@
 <?php
+    $left_image = get_field('left_image');
+    $right_image = get_field('right_image');
     $title = get_field('title');
 ?>
 
@@ -15,18 +17,30 @@
 
                 <div class="left">
 <!--                    this one-->
-                    <h2 class="title"><?= $title?></h2>
+                    <h2 class="title"><?= $title ?></h2>
 
                     <figure class="heroImage">
-                        <img src="https://picsum.photos/200/200" alt="test">
+                        <?php
+
+                        if ($left_image) {
+                            echo '<img src="' . esc_url($left_image) . '" alt="text">';
+                        }
+                        ?>
                     </figure>
 
                 </div>
 
                 <div class="right">
                     <figure class="heroImage">
-                        <img src="https://picsum.photos/200/50" alt="test">
+                        <?php
+
+                        if ($right_image) {
+                            echo '<img src="' . esc_url($right_image['url']) . '" alt="' . esc_attr($right_image['alt']) . '">';
+                        }
+                        ?>
+
                     </figure>
+
 
                     <ul class="heroList">
                         <li>Тому що він приводить «правильних» гостей.</li>

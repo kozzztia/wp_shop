@@ -1,3 +1,9 @@
+<?php
+$title = get_field('title');
+?>
+
+
+
 <?php get_header(); ?>
 
 <?php if (has_post_thumbnail()) {
@@ -5,8 +11,9 @@
 } ?>
 
     <div class="content centered">
-        <h1><?php the_title(); ?> page</h1>
+        <h1><?php the_title(); ?> page - </h1>
         <?php
+            echo $title;
             the_content();
         ?>
         <?php

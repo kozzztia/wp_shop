@@ -230,7 +230,6 @@ add_action('widgets_init', 'shop_widgets_init');
 
 
 
-
 // version generator
 function get_version(): string{
     return time() . 'shop';
