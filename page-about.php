@@ -14,6 +14,7 @@
             <div class="hero">
 
                 <div class="left">
+<!--                    this one-->
                     <h2 class="title"><?= $title?></h2>
 
                     <figure class="heroImage">
