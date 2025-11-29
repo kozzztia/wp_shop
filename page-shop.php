@@ -1,4 +1,7 @@
-<?php $id = get_the_ID()?>
+
+<?php
+$id = get_the_ID();
+?>
 
 <?php get_header(); ?>
     <div class="content centered ">
@@ -6,10 +9,10 @@
         <?php the_content(); ?>
 
 
+
         <div class="container mainText">
 
             <h4 class="title"><?php  echo get_post_meta( $id , 'main_title' , true); ?></h4>
-
         </div>
 
         <div class="container mainBlock hero">

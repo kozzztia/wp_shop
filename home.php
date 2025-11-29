@@ -6,6 +6,8 @@
     <div class="content centered">
         <h1><?php echo get_the_title(get_option('page_for_posts')); ?> : home</h1>
 
+
+
         <div class="posts-content">
             <?php if (have_posts()) : ?>
                 <div class="home-list">

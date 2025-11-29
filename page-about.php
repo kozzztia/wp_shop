@@ -1,7 +1,9 @@
 <?php
-    $left_image = get_field('left_image');
-    $right_image = get_field('right_image');
-    $title = get_field('title');
+$left_image = get_field('left_image');
+$right_image = get_field('right_image');
+$title = get_field('title');
+$list = get_field('list');
+$link = get_field('link_to');
 ?>
 
 <?php get_header(); ?>
@@ -12,11 +14,12 @@
 
     <div class="content centered">
         <h1><?php the_title(); ?> :page-about</h1>
+
         <div class="about">
             <div class="hero">
 
                 <div class="left">
-<!--                    this one-->
+                    <!--                    this one-->
                     <h2 class="title"><?= $title ?></h2>
 
                     <figure class="heroImage">
@@ -41,22 +44,19 @@
 
                     </figure>
 
+                    <?php
+                    if ($list) {
+                        $items = explode(';', $list);
+                        echo '<ul class="heroList">';
+                        foreach ($items as $item) {
+                            echo '<li><span>' . esc_html(trim($item)) . '</span></li>';
+                        }
+                        echo '</ul>';
 
-                    <ul class="heroList">
-                        <li>Тому що він приводить «правильних» гостей.</li>
-                        <li>Наш сидр обирають люди із середнім та високим доходом. Ті, хто цінує смак і культуру, а не «женеться за градусами». Такі гості закладів не провокують конфліктів, частіше замовляють «ще один келих» і створюють ту саму атмосферу, заради якої до вас повертаються.</li>
-                        <li>Для вас це — спокійні вечори, лояльна аудиторія і прибуток без ризиків.</li><li>Тому що він приводить «правильних» гостей.</li>
-                        <li>Наш сидр обирають люди із середнім та високим доходом. Ті, хто цінує смак і культуру, а не «женеться за градусами». Такі гості закладів не провокують конфліктів, частіше замовляють «ще один келих» і створюють ту саму атмосферу, заради якої до вас повертаються.</li>
-                        <li>Для вас це — спокійні вечори, лояльна аудиторія і прибуток без ризиків.</li>
-                        <li>Тому що він приводить «правильних» гостей.</li>
-                        <li>Наш сидр обирають люди із середнім та високим доходом. Ті, хто цінує смак і культуру, а не
-                            «женеться за градусами». Такі гості закладів не провокують конфліктів, частіше замовляють
-                            «ще один келих» і створюють ту саму атмосферу, заради якої до вас повертаються.
-                        </li>
-                        <li>Для вас це — спокійні вечори, лояльна аудиторія і прибуток без ризиків.</li>
-                    </ul>
+                    }
+                    ?>
                     <p class="button">
-                        <a href="#">link to</a>
+                        <a href="<?= esc_url($link['url'])?>"><?= esc_html($link['title'])?></a>
                     </p>
 
                 </div>
@@ -88,9 +88,9 @@
             </div>
 
             <div class="links">
-                <p class="link"><a href="#">number</a> </p>
-                <p class="link"><a href="#">mail</a> </p>
-                <p class="link"><a href="#">social</a> </p>
+                <p class="link"><a href="#">number</a></p>
+                <p class="link"><a href="#">mail</a></p>
+                <p class="link"><a href="#">social</a></p>
             </div>
 
 
@@ -98,15 +98,14 @@
 
         <?php
         wp_nav_menu([
-            'theme_location' => 'social',
-            'container' => 'div',
-            'container_class' => 'navigation',
-            'menu_class' => 'socialMenu',
-            'walker' => new Shop_Social_Icons_Only(),
+                'theme_location' => 'social',
+                'container' => 'div',
+                'container_class' => 'navigation',
+                'menu_class' => 'socialMenu',
+                'walker' => new Shop_Social_Icons_Only(),
         ]);
         ?>
     </div>
-
 
 
 <?php get_footer();

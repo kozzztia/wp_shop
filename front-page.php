@@ -2,7 +2,6 @@
 
 <div class="content centered">
     <h1><?php the_title(); ?> front-page</h1>
-    <?php get_header(); ?>
 
     <section class="features">
         <div class="feature">
@@ -14,8 +13,6 @@
             <p>Технические статьи и заметки</p>
         </div>
     </section>
-
-    <?php get_footer(); ?>
     <div class="page-content">
         <?php the_content(); ?>
     </div>
