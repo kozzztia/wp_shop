@@ -9,6 +9,7 @@
 
 
         <div class="posts-content">
+
             <?php if (have_posts()) : ?>
                 <div class="home-list">
                     <?php while (have_posts()) : the_post() ?>

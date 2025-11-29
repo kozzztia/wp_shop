@@ -7,6 +7,11 @@
         <article class="single-post">
             <h1><?php the_title(); ?> : single-post </h1>
             <time datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date(); ?></time>
+            <div class="test">
+                <?php if (get_field('post_title')): ?>
+                    <div><?php the_field('post_title'); ?></div>
+                <?php endif; ?>
+            </div>
 
             <?php if (has_post_thumbnail()) : ?>
                 <div class="featured-image">

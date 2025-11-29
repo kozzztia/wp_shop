@@ -1,8 +1,17 @@
 <?php get_header(); ?>
 
+
 <div class="content centered">
     <h1><?php the_archive_title(); ?> : archive</h1>
-    <p><?php the_archive_description(); ?></p>
+
+        <?php
+        $term = get_queried_object();
+        $option_text = get_field('option_text', $term);
+
+        if ($option_text) {
+            echo '<h3>' .$option_text .'</h3>';
+        }
+        ?>
 
     <?php if (have_posts()) : ?>
         <div class="post-list">
@@ -16,7 +25,6 @@
         </div>
 
         <?php get_template_part('template_parts/pagination');?>
-        </div>
     <?php else : ?>
         <p>nothing....................................</p>
     <?php endif; ?>
@@ -37,5 +45,4 @@
 <!--    </div>-->
 
 </div>
-
 <?php get_footer(); ?>

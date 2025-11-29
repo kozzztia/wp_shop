@@ -210,7 +210,16 @@ function shop_widgets_init(): void
 
 add_action('widgets_init', 'shop_widgets_init');
 
-
+add_action('init', function () {
+    register_taxonomy('posts_taxo', 'post', [
+        'label' => 'Posts Taxo',
+        'hierarchical' => true,
+        'show_admin_column' => true,
+        'public' => true,
+        'rewrite' => ['slug' => 'posts-taxo'],
+    ]);
+    register_taxonomy_for_object_type('posts_taxo', 'post');
+});
 
 
 
